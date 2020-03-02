@@ -1,0 +1,198 @@
+---
+title: 'Chapter 1: Probability Theory'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Def. __Random Generative Process__: 
+
+The process that determines the outcome in a setting in which there are several possible outcomes, each w/ some probablity of occuring. Mechanism that selects an outcome among possible outcomes. There are __three components__ that fully describe a random generative process: the sample space, the event space, and the probability measure.
+
+Def. __Sample Space__:
+
+$\Omega$, set of all possible outcomes
+
+
+Def. __Event Space__:
+
+Set of subsets of $\Omega$, $S \subseteq \Omega$, that contain the relevent event(s). Must satisfy the following:
+
+* Nonempty: $S \ne \emptyset$
+* Closed under complements: if $A \in S$, then $A^c \in S$.
+* Closed under countable unions: if $A_1,A-2,A-3,... \in S$ then $A_1 \cup A_2 \cup ... \in S$
+
+
+Def. __Probability Measure__:
+
+$P: S \rightarrow \R$, a function that assigns a probability to every event in the event space.
+
+
+Def. __Kolmogorov Axioms__:
+
+$(\Omega,S,P)$ are a probability space if the following are satisfied:
+
+* Non-negativity: $\forall A \in S, P(X) \geq 0$ 
+* Unitarity: $P(\Omega) = 1$
+* Countable Additivity: If $A_1,A_2,... \in S are pairwise disjoint, then P(A_1 \cup A_2 \cup ...) = P(A_1) + P(A_2) + ...$
+
+From these additional properites can be derived.
+
+
+Theorem: __Basic Properites of Probability__:
+
+Let $(\Omega,S,P)$ be a probability space, then:
+
+* Monotonicity: $\forall A,B \in S$ if $A \subseteq B$ then $P(A) \leq P(B)$.
+* Subtraction rule: $\forall A,B \in S$ if $A \subseteq B$ then $P(B\A) = P(B) - P(A)$.
+* Zero Probability of empty set: $P(\emptyset) = 0$.
+* Probability bounds: $\forall A \in S, 0 \leq P(A) \leq 1$.
+* Complement rule: $\forall A \in S, P(A^c) = 1 - P(A)$
+
+
+Def. __Joint Probability__:
+
+For $A,B \in S$ the joint probability of A and B is $P(A \cap B)$.
+
+
+Theorem: __Addition Rule__:
+
+For $A,B \in S$, $P(A \cup B) = P(A) + P(B) - P(A \cap B)$.
+
+
+Def. __Conditional Probability__:
+
+For $A,B \in S$ with $P(B) > 0$, the conditional probability of A given B is $P(A|B) = \frac{P(A \cap B)}{P(B)}$
+
+
+Theorem: __Multiplicative Law of Probability__:
+
+For $A,B \in S$ with $P(B) > 0$, $P(A|B)P(B) = P(A \cap B)$
+
+
+Theorem: __Bayes' Rule__:
+
+$P(A|B) = \frac{P(B|A)P(A)}{P(B)}$
+
+
+Def. __Partition__:
+
+If $A_1,A_2,... \in S$ are nonempty and pairwise disjoint, and $\Omega = A_1 \cup A_2 \cup ...$, then {$A_1,A_2,...$} is a partition of $\Omega$.
+
+
+Theorem: __Law of Total Probability__:
+
+If {$A_1,A_2,...$} is a partition of $\Omega$ and $B \in S$, then $P(B) = \sum_{i}P(B \cap A_i)$
+
+
+Def. __Independence__:
+
+$P(A \cap B) = P(A)P(B)$
+
+
+Theorem: __Conditional Probability and Independence__:
+
+Independent if and only if $P(A|B) = P(A)$
+
+
+Def. __Random Variable__:
+
+A variable that takes on a real value determined by a random generative process. Container or place holder for a quantity that has to be determined by the RGP. A random variable is a function $X : \Omega \rightarrow \R$ s.t., $\forall r \in \R$, {$\omega \in \Omega : X(\omega) \leq r$} $\in S$. The $\omega \in \Omega$ represent states in the world. So basically, take each state of the world and map it to a real number.
+
+
+Def. __Function of a Random Variable__:
+
+Let  $g: U \rightarrow R$ be a function, where $X(\Omega) \subseteq U \subseteq \R$. then , if g of X is a random variable, we say that g is a function of X, and write $g(X)$ to denote the random variable g of X.
+
+
+Def. __Operator on a Random Variable__:
+
+An operator A on a random variable maps the function $X()$ to a real number, denoted by $A[X]$. Read again carefully, maps a FUNCTION, i.e. our random variable, to a real number.
+
+
+Def. __Discrete Random Variable__:
+
+A random variable X is discrete if its range, $X(\Omega)$, is a countable set.
+
+
+Def. __Probability Mass Function (PMF)__:
+
+$f(x) = Pr[X = x], \forall x \in \R$.
+
+
+Def. __Cumulative Distribution Function__:
+
+$F(x) = Pr[X \leq x], \forall x \in \R$
+
+
+Def. __Continuous Random Variable__:
+
+A random variable X is continuous if there exists a non-negative function $f:\R \rightarrow \R$ s.t. the CDF of X is $F(x) = Pr[X \leq x] = \int_{-\infty}^{x} f(u)du, \forall x \in \R$
+
+
+Def. __Probability Density Function__:
+
+Derivative of the CDF for a continuous random variable. continuous analog of PMF.
+
+
+Def. __Support__:
+
+$Supp[X] = x \in \R : f(x) > 0$, that is, values of X that have greater than 0 probability.(For continuous r.v. it is the set of values oer which X has non zero probability density).
+
+
+Def. __Equality of Random Variables__:
+
+$X = Y$ then, $\forall \omega \in \Omega, X(\omega) = Y(\omega)$.
+
+
+Theorem: __Equality of Functions of a Random Variable__:
+
+$g(X) = h(X) \iff \forall x \in X(\Omega), g(x) = h(x)$
+
+
+Def. __Joint PMF__:
+
+$f(x,y) = Pr[X = x, Y = y], \forall x,y \in \R$
+
+
+Def. __Joint CDF__:
+
+$F(x,y) = Pr[X \leq x, Y \leq y], \forall x,y \in \R$
+
+
+Theorem: __Marginal PMF__:
+
+$f_Y(y) = Pr[Y = y] = \sum_{x \in Supp[X]}f(x,y),\forall y \in \R$
+
+
+Def. __Conditional PMF__:
+
+$f_{y|x}(y|x) = Pr[Y = y|X = x] = \frac{Pr[X = x, Y = y]}{Pr[X = x]} = \frac{f(x,y)}{f_X(x)} \forall y \in \R$ and $\forall x \in Supp[X]$
+
+
+Theorem: __Multiplicative Law for PMFs__:
+
+$f_{x|y}(x|y)f_y(y) = f(x,y)$
+
+
+There are analogous definitions and theorems for continous random variables presented in the book that are provided here.
+
+
+Def. __Independence of Random Variables__:
+
+$\forall x,y \in \R, f(x,y) = f_x(x)f_y(y)$, independence is denoted $X \perp Y$ (the symbol used in the book actually has two vertical bars. Instead I've used the symbol for perpendicular.)
+
+
+Theorem: __Implications of Indepedence__:
+
+The following statements are equivalent:
+
+* $X \perp Y$
+* $\forall x,y \in \R, f(x,y) = f_x(x)f_y(y)$
+* $\forall x \in \R$ and $\forall y \in Supp[Y], f_{X|Y}(x|y) = f_X(x)$
+* $\forall D,E \subseteq \R$, the events {$X \in D$} and {$Y \in E$} are independent
+* For all functions g of X and h of y, $g(X) \perp h(Y)$
+
+The book also has an additional short section on multivariate generalizations that is not covered here.

@@ -1,0 +1,9 @@
+---
+title: "Chapter 3: Learning from Random Samples"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+

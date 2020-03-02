@@ -1,0 +1,225 @@
+---
+title: "Chapter 2: Summarizing Distributions"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Def. __Expected Value__:
+
+$E[X] = \int_{-\infty}^{\infty}xf(x)dx$, the expected value is an operator that takes in r.v. and produces a number. The average over many many values of the random variable. Most commonly used to measure the "center" of a probability distribution.
+
+
+Def. __Expectation of a function of a random variable__:
+
+$E[g(x)] = \int_{-\infty}^{\infty}g(x)f(x)dx$
+
+
+Theorem: __Properties of Expected Values__:
+
+* $\forall c \in \R, E[c] = c$
+* $\forall a \in \R, E[aX] = aE[X]$
+
+
+Def. __Expectation of a Bivariate Random Vector__:
+
+$E[(X,Y)] = (E[X],E[Y])$
+
+Theorem: __Expectation of a Function of Two Random Variables__:
+
+$E[h(X,Y)] = \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}h(x,y)f(x,y)dydx$
+
+
+Theorem: __Linearity of Expectations__:
+
+$E[aX + bY + c] = aE[X] + bE[Y] + c$
+
+
+Def. __jth Raw Moment__:
+
+$\mu_j' = E[X^j]$
+
+Central moment is a similar summary that does not depend on expected value
+
+Def. __jth Central Moment__:
+
+$\mu_j' = E[(X - E[X])^j]$
+
+Second central moment is the variance
+
+Def. __Variance__:
+
+$V[X] = E[(X - E[X])^2]$ or
+$V[X] = E[X^2] - E[X]^2$
+
+
+Theorem __Properties of Variance__:
+
+* $\forall c \in R, V[X + c] = V[X]$
+* $\forall a \in R, V[aX] = a^2V[X]$
+
+Def. __Standard Deviation__:
+
+$\sigma[X] = \sqrt{V[X]}$
+
+Theorem: __Properties of Standard Deviation__:
+
+* $\forall c \in R, \sigma[X + c] = \sigma[X]$
+* $\forall a \in R, \sigma[aX] = |a|\sigma[X]$
+
+Theorem: __Chebyshev's Inequality__:
+
+$Pr[|X - E[X]| \geq \epsilon\sigma[X]] \leq \frac{1}{\epsilon^2}$
+
+Def. __Normal Distribution__:
+
+$f(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x - \mu)^2}{2\sigma^2}}, \forall x \in \R$
+
+Theorem: __Mean and Standard Deviation of the Normal Distribution__:
+
+* $E[X] = \mu$
+* $\sigma[X] = \sigma$
+
+Theorem: __Properties of the Normal Distribution__:
+
+* $\forall a,b \in \R$ with $a \neq 0$, if $W = aX + b$, then $W$ ~ $N(a\mu_X + b, a^2\sigma_X^2)$
+* If $X \perp Y$ and $Z = X + Y$, then $Z$ ~ $N(\mu_X + \mu_Y,\sigma_X^2 + \sigma_Y^2)$
+
+Def. __Mean Squared Error (MSE) about c__:
+
+$E[(X - c)^2]$
+
+Theorem: __Alternative Formula for MSE__:
+
+$E[(X - c)^2] = V[X] + (E[X] - c)^2$, Variance plus bias (from c) squared.
+
+Theorem: __Expected Value Minimizes MSE__:
+
+See book or elsewhere. Very simple proof.
+
+Def. __Covariance__:
+
+Operator (returns a number from r.v. input)
+
+$Cov[X,Y] = E[(X - E[X])(Y - E[Y])]$ or $Cov[X,Y] = E[XY] - E[X]E[Y]$
+
+Theorem: __Variance Rule__:
+
+$V[X + Y] = V[X] + 2Cov[X,Y] + V[Y]$ and more generally $V[aX + bY + c] = a^2V[X] + 2abCov[X,Y] + b^2V[Y]$
+
+Theorem: __Properties of Covariance__:
+
+* $\forall c,d \in \R, Cov[c,X] = Cov[X,c] = Cov[c,d] = 0$
+* $Cov[X,Y] = Cov[Y,X]$
+* $Cov[X,X] = V[X]$
+* $\forall a,b,c,d \in \R, Cov[aX + c,bY + d] = abCov[X,Y]$
+* $Cov[X + W,Y + Z] = Cov[X,Y] + Cov[X,Z] + Cov[W,Y] + Cov[W,Z]$
+
+Def. __Correlation__:
+
+Measures linear depedence 
+
+$\rho[X,Y] = \frac{Cov[X,Y]}{\sigma[X]\sigma[Y]}$
+
+Theorem: __Properties of Correlation__:
+
+* $\rho[X,Y] = \rho[Y,X]$
+* $\rho[X,X] = 1$
+* $\rho[aX + c,bY + d] = \rho[X,Y], \forall a,b,c,d \in \R$ s.t. either $a,b > 0 or a,b < 0$
+* $\rho[aX + c,bY + d] = -\rho[X,Y], \forall a,b,c,d \in \R$ s.t. either $a < 0 < b or b < 0 < a$
+
+Theorem: __Implications of Indepedence (Part II)__:
+
+* $E[XY] = E[X]E[Y]$
+* Covariance is zero
+* Correlation is zero
+* Variances are additive: $V[X + Y] = V[X] + V[Y]$
+
+Zero correlation/covariance does not imply independence, however.
+
+
+Def. __Conditional Expectation__:
+
+For jointly continuous random variables X and Y w/ joint PDF $f$, the conditional expectation of Y given X = x is
+
+$E[Y|X = x] = \int_{-\infty}^{\infty}yf_{Y|X}(y|x)dy, \forall x \in Supp[X]$
+
+Family of operators on the random vector (X,Y), indexed by x.
+
+Theorem: __Conditional Expectation of a Function of Random Variables__:
+
+$E[h(X,Y)|X = x] = \int_{-\infty}^{\infty}h(x,y)f_{Y|X}(y|x)dy, \forall x \in Supp[X]$
+
+
+Def. __Conditional Variance__:
+
+$V[Y|X = x] = E[(Y - E[Y|X = x])^2|X=x], \forall x \in Supp[X]$ or $E[Y^2|X = x] - E[Y|X = x]^2$
+
+
+Theorem: __Linearity of Conditional Expectations__:
+
+$E[g(X)Y+h(X)|X = x] = g(x)E[Y|X = x] + h(x)$
+
+
+Def. __Conditional Expectation Function (CEF)__:
+
+$G_Y(x) = E[Y|X = x], \forall x \in Supp[X]$
+
+
+Theorem: __Law of Iterated Expectations__:
+
+$E[Y] = E[E[Y|X]]$, Unconditional expectation is a weighted average of the conditional expectation.
+
+
+Theorem: __Law of Total Variance__:
+
+$V[Y] = E[V[Y|X]] + V[E[Y|X]]$, partition variability of Y into average variability "within" values of X and "across" values of X. This is also called the ANOVA identity or theorem.
+
+
+Theorem: __Properties of Deviations from the CEF__:
+
+Let $\varepsilon = Y - E[Y|X]$, then
+
+* $E[\varepsilon|X] = 0$
+* $E[\varepsilon] = 0$
+* If g is a function of X, then $Cov[g(X),\varepsilon] = 0$
+* $V[\varepsilon|X] = V[Y|X]$
+* $V[\varepsilon] = E[V[Y|X]]$
+
+Theorem: __The CEF is the Best Predictor__:
+
+The best predictor of Y given X in terms of minimum MSE. However, the CEF can be very complicated so we often restrict it to being linear.
+
+Theorem: __Best Linear Predictor (BLP)__:
+
+Best linear predictor of Y give X is $g(X) = \alpha + \beta X$, where 
+
+$\alpha = E[Y] - \frac{Cov[X,Y]}{V[X]}E[X]$,
+
+$\beta = \frac{Cov[X,Y]}{V[X]}$
+
+
+Theorem: __Properties of Deviations from the BLP__:
+
+Let $\varepsilon = Y - g(X)$ where g(X) is the BLP, then
+
+
+* $E[\varepsilon] = 0$
+* $E[X\varepsilon] = 0$
+* $Cov[X,\varepsilon] = 0$
+
+
+Theorem: __Implications of Independence (Part III)__:
+
+* $E[Y|X] = E[Y]$
+* $V[Y|X] = V[Y]$
+* The BLP of Y given X is $E[Y]$
+* If g is a function of X and h is a function of Y, then
+    + $E[g(Y)|h(X)] = E[g(Y)]$
+    + The BLP of $h(Y)$ given $g(X)$ is $E[h(Y)]$
+    
+  
+The book covers multivariate generalizations of the above definitions and theorems. Very important material that is not included in these notes.
+
