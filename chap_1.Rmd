@@ -13,16 +13,18 @@ The process that determines the outcome in a setting in which there are several 
 
 Def. __Sample Space__:
 
-$\Omega$, set of all possible outcomes
+$\Omega$, set of all possible outcomes (states of the world) for an RGP. Examples include the outcomes of a single die roll, $\Omega = {1,2,3,4,5,6}$. Or the result of a single coin flip $\Omega = {Heads,Tails}$.
 
 
 Def. __Event Space__:
 
-Set of subsets of $\Omega$, $S \subseteq \Omega$, that contain the relevent event(s). Must satisfy the following:
+Subsets of $\Omega$, $S \subseteq \Omega$, that contain the outcomes (states of the world) relevant to a particular event. In other words, the sample space includes all possible states of the world, but some events occur in multiple states and are represented as sets containing all of those states of the world in which the event occurs. For example, if we define the event $A$ as rolling an even number on a single die roll, we have $A = {2,4,5}$. A would be a subset of our event space S.
+
+An Event Space Must satisfy the following:
 
 * Nonempty: $S \ne \emptyset$
 * Closed under complements: if $A \in S$, then $A^c \in S$.
-* Closed under countable unions: if $A_1,A-2,A-3,... \in S$ then $A_1 \cup A_2 \cup ... \in S$
+* Closed under countable unions: if $A_1,A_2,A_3,... \in S$ then $A_1 \cup A_2 \cup ... \in S$
 
 
 Def. __Probability Measure__:
@@ -36,7 +38,7 @@ $(\Omega,S,P)$ are a probability space if the following are satisfied:
 
 * Non-negativity: $\forall A \in S, P(X) \geq 0$ 
 * Unitarity: $P(\Omega) = 1$
-* Countable Additivity: If $A_1,A_2,... \in S are pairwise disjoint, then P(A_1 \cup A_2 \cup ...) = P(A_1) + P(A_2) + ...$
+* Countable Additivity: If $A_1,A_2,... \in S$ are pairwise disjoint, then $P(A_1 \cup A_2 \cup ...) = P(A_1) + P(A_2) + ...$
 
 From these additional properites can be derived.
 
@@ -81,11 +83,14 @@ Def. __Partition__:
 
 If $A_1,A_2,... \in S$ are nonempty and pairwise disjoint, and $\Omega = A_1 \cup A_2 \cup ...$, then {$A_1,A_2,...$} is a partition of $\Omega$.
 
+"A partition divides the sample space into mutually exclusive and exhaustive categories or 'bins'. Every outcome in $\Omega$ is contained in exactly one $A_i$, so exactly one event $\A_i$ in the partition occurs for any draw from $(\Omega,S,P)$". 
+
 
 Theorem: __Law of Total Probability__:
 
 If {$A_1,A_2,...$} is a partition of $\Omega$ and $B \in S$, then $P(B) = \sum_{i}P(B \cap A_i)$
 
+To give a simple example using the roll of a single die again, let $A_1 = [1], A_2 = [2], ...$ be a partition of $\Omega$ and let $B = [2,4,6]$ be the event of rolling an even number. Then $$P(B) = \sum_{i}P(B \cap A_i) = P([2,4,6] \cap [1]) + P([2,4,6] \cap [2]) + ... = P(\emptyset) + P([2]) + ... = 1/2$$
 
 Def. __Independence__:
 

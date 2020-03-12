@@ -7,3 +7,15 @@ output: html_document
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+#### I.I.D. Random Variables
+
+Def. __I.I.D.__ :
+
+* Mutually indepedent: $\forall A \subseteq [1,2,...,n], \forall (x_1,x_2,...,x_n) \in \R^n$, $F_A((x_i)_{i \in A}) = \Pi_{i \in A} F_i(x_i)$.
+
+* Identically Distributed: $\forall i,j \in [1,2,...,n]$ and $\forall x \in \R, F_i(x) = F_j(x)$
+
+__I.I.D as Approximation__:
+
+
+#### Estimation
